@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using InvisibleMaze.Maze.Algorithms;
 
 namespace InvisibleMaze.Maze
 {
@@ -90,6 +91,8 @@ namespace InvisibleMaze.Maze
                 return new GrowingTreeRandomMazeGenerator();
             else if (_mazeType == MazeType.GrowingTreeOldest)
                 return new GrowingTreeOldestMazeGenerator();
+            else if(_mazeType == MazeType.PrimsAlgorithm)
+                return new PrimsAlgorithmMazeGenerator();
 
             return null;
         }

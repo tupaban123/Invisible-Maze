@@ -4,6 +4,7 @@
     {
         RecursiveBacktracker,
         GrowingTreeRandom,
-        GrowingTreeOldest
+        GrowingTreeOldest,
+        PrimsAlgorithm
     }
 }

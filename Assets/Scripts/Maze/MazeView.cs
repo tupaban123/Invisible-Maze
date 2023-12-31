@@ -1,4 +1,5 @@
 ﻿using InvisibleMaze.Configs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace InvisibleMaze.Maze
         private MazePresenter _mazePresenter;
 
         private List<MazeViewCell> cells = new List<MazeViewCell>();
+		
+		public static event Action<Transform> OnMazeCreated;
 
         public void Initialize(MazeConfig config, MazeType mazeType)
         {
@@ -75,7 +78,9 @@ namespace InvisibleMaze.Maze
                 winZoneCoord += new Vector2(0.8f * 3, 0.75f);
             }
 
-            Instantiate(winZone, winZoneCoord, Quaternion.identity);
+            var winZoneObject = Instantiate(winZone, winZoneCoord, Quaternion.identity);
+			OnMazeCreated?.Invoke(winZoneObject.transform);
+			
             StartCoroutine(ColorChanging());
         }
 
